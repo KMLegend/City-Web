@@ -12,6 +12,10 @@ https://docs.djangoproject.com/pt-br/5.1/ref/settings/
 
 from pathlib import Path
 
+from django.contrib.admindocs.utils import ROLES
+
+import portalCorretoresHypno.apps
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,18 +29,21 @@ SECRET_KEY = 'django-insecure-sjk8j)=f@-fa*&4pq5d3418e3jpopq1y^zvqt63*4sbc8!5)mk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', '192.168.100.36', '192.168.100.159', 'cityinc.ddns.net']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'portalCorretoresHypno.apps.PortalcorretoreshypnoConfig',
+    'hubPrincipal',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rolepermissions'
 ]
 
 MIDDLEWARE = [
@@ -105,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -117,7 +124,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / "portalCorretoresHypno/static/"
+]
+
+STATIC_ROOT = BASE_DIR / "static/"
+
 # Default primary key field type
 # https://docs.djangoproject.com/pt-br/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ROLEPERMISSIONS_MODULE = "siteCity.roles"
