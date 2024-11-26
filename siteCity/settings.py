@@ -11,10 +11,13 @@ https://docs.djangoproject.com/pt-br/5.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
+from dotenv import load_dotenv
 from django.contrib.admindocs.utils import ROLES
 
 import portalCorretoresHypno.apps
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/pt-br/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-sjk8j)=f@-fa*&4pq5d3418e3jpopq1y^zvqt63*4sbc8!5)mk'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -43,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rolepermissions'
+    'rolepermissions',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -54,6 +58,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware'
 ]
 
 ROOT_URLCONF = 'siteCity.urls'
@@ -136,3 +142,35 @@ STATIC_ROOT = BASE_DIR / "static/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ROLEPERMISSIONS_MODULE = "siteCity.roles"
+
+
+SECURE_SSL_REDIRECT = False
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://192.168.100.159:8000",
+    "http://cityinc.ddns.net:8000"
+]
+
+CORS_ALLOW_HEADERS = (
+    "accept",
+    "content-disposition",
+    "accept-encoding",
+    "origin",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+)
+
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS"
+]

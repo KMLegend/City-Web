@@ -4,6 +4,9 @@ import pyodbc
 import datetime
 from shareplum import Site, Office365
 from shareplum.site import Version
+import sqlite3
+
+from siteCity.settings import BASE_DIR
 
 
 class Api:
@@ -12,7 +15,7 @@ class Api:
         self.conn = None
         self.cursor = None
 
-    def conexao_bd(self, usuario, senha, database):
+    def conexao_bd_sql_server(self, usuario, senha, database):
         try:
             dados_conexao = (
                 "Driver={SQL Server};"
@@ -27,53 +30,191 @@ class Api:
 
         return self.conn
 
-    def tabelaDisponivel(self):
-        conn = self.conexao_bd(usuario="usruau", senha="spfmed4$", database="BI")
+    def tabela_disponivel(self):
+        conn = self.conexao_bd_sql_server(usuario="usruau", senha="spfmed4$", database="UAU")
         sql = """
-                SELECT 
-                    BASE."Produto" ,
-                    BASE."Empresa" ,
-                    BASE."Obra" ,
-                    BASE."Unidade" ,
-                    BASE."Tipo" ,
-                    BASE."Cod_Tipologia" ,
-                    BASE."Tipologia" ,
-                    BASE."Status" 
-                FROM (
-                    SELECT DISTINCT
-                        "prod_unid" AS  "Produto",
-                        "empresa_unid" AS  "Empresa",
-                        "obra_unid" AS  "Obra",
-                        UPPER("identificador_unid") AS "Unidade" ,
-                        CASE 
-                            WHEN UPPER("identificador_unid") LIKE 'A%' THEN 'ALMOXERIFADO'
-                            WHEN UPPER("identificador_unid") LIKE 'E%' THEN 'ESCANINHOS'
-                            WHEN UPPER("identificador_unid") LIKE 'L%' THEN 'LOJAS'
-                            WHEN UPPER("identificador_unid") LIKE 'V%' THEN 'VAGA VEICULOS'
-                            WHEN UPPER("identificador_unid") LIKE 'G%' THEN 'VAGA VEICULOS'
-                            WHEN UPPER("identificador_unid") LIKE 'M%' THEN 'VAGA MOTOS'
-                            WHEN UPPER("identificador_unid") LIKE '%MT' THEN 'VAGA MOTOS'
-                            WHEN "empresa_unid" IN (76) THEN 'SALA COMERCIAL'
-                            WHEN "empresa_unid" IN (58,	75,	96,	98,	106) THEN 'LOTE RESIDENCIAL'
-                        ELSE 'APARTAMENTO RESIDENCIAL' END  AS  "Tipo",
-                        "codtipprod_unid" AS  "Cod_Tipologia" ,
-                        "descricao_tipprod" AS  "Tipologia" ,
-                        UPPER("descr_status") AS "Status"
-
-                    FROM BI.dbo.TB_GER_CONTROLE_ESTOQUE_VSO
-                    WHERE "prod_unid" NOT IN (36,58,65) 
-                        AND "empresa_unid" NOT IN (9,19,78) 
-                        AND (UPPER("identificador_unid") IS NOT NULL 
-                        AND UPPER("identificador_unid") NOT LIKE '')
-
-                ) AS BASE
-
-                WHERE BASE."Status" = 'DISPONÍVEL'
-                AND BASE."Obra" LIKE '%I'
-                """
+            SELECT
+                    TotalPerson.prod_unid AS  Produto,
+                    TotalPerson.empresa_unid AS  Empresa,
+                    TotalPerson.NomeFantasia_emp  AS NomeFantasia,
+                    TotalPerson.obra_unid AS  Obra,
+                    UPPER(TotalPerson.identificador_unid) AS Unidade,
+                    CASE
+                        WHEN UPPER(TotalPerson.identificador_unid) LIKE 'A%' THEN 'ALMOXERIFADO'
+                        WHEN UPPER(TotalPerson.identificador_unid) LIKE 'E%' THEN 'ESCANINHOS'
+                        WHEN UPPER(TotalPerson.identificador_unid) LIKE 'L%' THEN 'LOJAS'
+                        WHEN UPPER(TotalPerson.identificador_unid) LIKE 'V%' THEN 'VAGA VEICULOS'
+                        WHEN UPPER(TotalPerson.identificador_unid) LIKE 'G%' THEN 'VAGA VEICULOS'
+                        WHEN UPPER(TotalPerson.identificador_unid) LIKE 'M%' THEN 'VAGA MOTOS'
+                        WHEN UPPER(TotalPerson.identificador_unid) LIKE '%MT' THEN 'VAGA MOTOS'
+                        WHEN TotalPerson.empresa_unid IN (76) THEN 'SALA COMERCIAL'
+                        WHEN TotalPerson.empresa_unid IN (58,75,96,98,106) THEN 'LOTE RESIDENCIAL'
+                    ELSE 'APARTAMENTO RESIDENCIAL' END  AS  Tipo,
+                    TotalPerson.codtipprod_unid AS Cod_Tipologia,
+                    TotalPerson.descricao_tipprod AS  Tipologia,
+                    UPPER(TotalPerson.Descr_status) AS Status
+            FROM (
+                SELECT
+                    UP.prod_unid,
+                    UP.empresa_unid,
+                    CASE
+                        WHEN UP.empresa_unid = 42 AND UP.obra_unid LIKE '2T%' THEN 'CITY PARK PALACE'
+                        WHEN UP.empresa_unid = 42 AND UP.obra_unid LIKE '3T%' THEN 'CITY PARK ROYAL'
+                        WHEN UP.empresa_unid = 42 AND UP.obra_unid LIKE '420%' THEN 'CITY PARK MAJESTIC'
+                    ELSE E.NomeFantasia_emp END AS NomeFantasia_emp,
+                    UP.obra_unid,
+                    --O.descr_obr,
+                    UP.identificador_unid,
+                    UP.codtipprod_unid,
+                    TP.descricao_tipprod,
+                    CASE
+                        WHEN UP.vendido_unid = 0 THEN 'Disponível'
+                        WHEN UP.vendido_unid = 1 THEN
+                            (CASE WHEN UD.tipocontrato_udt IN( 1, 2, 5 ) THEN 'Locada' ELSE 'Vendida' END)
+                        WHEN UP.vendido_unid = 2 THEN 'Reservado'
+                        WHEN UP.vendido_unid = 3 THEN 'Proposta'
+                        WHEN UP.vendido_unid = 4 THEN 'Quitado'
+                        WHEN UP.vendido_unid = 5 THEN 'Escriturado'
+                        WHEN UP.vendido_unid = 6 THEN 'Em venda'
+                        WHEN UP.vendido_unid = 7 THEN 'Suspenso'
+                        WHEN UP.vendido_unid = 8 THEN 'Fora de venda'
+                        WHEN UP.vendido_unid = 9 THEN 'Em acerto'
+                        WHEN UP.vendido_unid = 10 THEN 'Dação' END AS Descr_status
+                FROM  UAU.dbo.UnidadePer AS UP
+            
+                LEFT JOIN UAU.dbo.UnidadeDetalhe AS UD
+                    ON UP.empresa_unid = UD.empresa_udt
+                    AND UP.prod_unid = UD.prod_udt
+                    AND UP.numper_unid = UD.numper_udt
+            
+                LEFT JOIN UAU.dbo.tipologiaproducao AS TP
+                    ON TP.codigo_tipprod = UP.codtipprod_unid
+            
+                LEFT JOIN UAU.dbo.Empresas AS E
+                ON UP.empresa_unid = E.Codigo_emp
+            
+                LEFT JOIN UAU.dbo.Obras AS O
+                ON UP.obra_unid = O.cod_obr
+                AND UP.empresa_unid = O.Empresa_obr
+            
+            
+            )  AS TotalPerson
+            
+            WHERE TotalPerson.prod_unid NOT IN (36,58,65)
+                AND TotalPerson.empresa_unid NOT IN (9,19,78)
+                AND (TotalPerson.identificador_unid IS NOT NULL
+                AND TotalPerson.identificador_unid NOT LIKE '')
+                AND TotalPerson.Descr_status = 'DISPONÍVEL'
+                AND TotalPerson.obra_unid LIKE '%I'
+        """
         df_consulta = pd.read_sql(sql, conn)
         conn.close()
         return df_consulta
+
+    def conexao_bd_sqlite(self):
+        self.con = sqlite3.connect(BASE_DIR / "db.sqlite3")
+        return self.con
+
+    def tabela_disponivel_sqlite(self):
+        con = self.conexao_bd_sqlite()
+        cur = con.cursor()
+        df_consulta = self.tabela_disponivel()
+
+        truncate = """
+        DROP TABLE tabelaVendasDisponiveis;
+        """
+        sql_create = """
+        CREATE TABLE tabelaVendasDisponiveis (
+            Produto varchar(255),
+            Empresa varchar(255),
+            Obra varchar(255),
+            NomeFantasia varchar(255),
+            Unidade varchar(255),
+            Tipo varchar(255),
+            Cod_tipologia varchar(255),
+            Tipologia varchar(255),
+            Status varchar(255)
+        )
+        """
+
+        cur.execute(truncate)
+        cur.execute(sql_create)
+
+        for index, row in df_consulta.iterrows():
+            # print(row)
+            sql_insert = f"""
+            
+            INSERT INTO tabelaVendasDisponiveis VALUES ('{row['Produto']}','{row['Empresa']}','{row['Obra']}', '{row['NomeFantasia']}','{row['Unidade']}','{row['Tipo']}','{row['Cod_Tipologia']}','{row['Tipologia']}', '{row['Status']}')
+            
+            """
+
+            cur.execute(sql_insert)
+
+        con.commit()
+
+    def tabela_de_vendas_sharepoint(self, nome_planilha):
+        authcookie = Office365('https://cityinc123.sharepoint.com', username='inovacao.sistemas@cityinc.com.br',
+                               password='Zat41304').GetCookies()
+        site = Site('https://cityinc123.sharepoint.com/inovacao-sistemas/', version=Version.v365, authcookie=authcookie)
+
+        pasta = site.Folder('Documentos Compartilhados/Compartilhado/Comercial')
+        df_tabela_vendas = pd.read_excel(pasta.get_file('Planilha padrão -  Tabela de Venda.xlsx'),
+                                           sheet_name=nome_planilha)
+
+        return df_tabela_vendas
+
+    def tabela_vendas_sqlite(self):
+        con = self.conexao_bd_sqlite()
+        cur = con.cursor()
+        df_consulta = self.tabela_de_vendas_sharepoint("Tabela de vendas")
+
+        truncate = """
+        DROP TABLE tabelaDeVendas;
+        """
+        sql_create = """
+        CREATE TABLE tabelaDeVendas (
+            Empreendimento  int,
+            Obra  varchar(255),
+            Unidade  varchar(255),
+            Tipo  varchar(255),
+            Suites  int,
+            Area Privativa Total (m2)  float,
+            Area Apart. (m2)  float,
+            Area descoberta (m2)  float,
+            Vagas de Garagem  varchar(255),
+            PVTO VAGAS  varchar(255),
+            ESC. GAR.  varchar(255),
+            Area ESC.  float,
+            ESC. PAV.  varchar(255),
+            Area ESC. PAV.  int,
+            Valor Total  float,
+            Sinal  float,
+            Sinal 3 parcelas  float,
+            Mensais  float,
+            Semestrais  float,
+            Anual  float,
+            SUBTOTAL  float,
+            FINANCIAMENTO BANCARIO  float,
+            Tipologia  varchar(255),
+            STATUS  varchar(255),
+        );
+        """
+
+        cur.execute(truncate)
+        cur.execute(sql_create)
+
+        for index, row in df_consulta.iterrows():
+            print(row)
+            sql_insert = f"""
+
+            INSERT INTO tabelaDeVendas VALUES ('{row['Empreendimento']}','{row['Obra']}','{row['Unidade']}','{row['Tipo']}','{row['Suites']}','{row['Area Privativa Total (m2)']}','{row['Area Apart. (m2)']}','{row['Area descoberta (m2)']}','{row['Vagas de Garagem']}','{row['PVTO VAGAS']}','{row['ESC. GAR.']}','{row['Area ESC.']}','{row['ESC. PAV.']}','{row['Area ESC. PAV.']}','{row['Valor Total']}','{row['Sinal']}','{row['Sinal 3 parcelas']}','{row['Mensais']}','{row['Semestrais']}','{row['Anual']}','{row['SUBTOTAL']}','{row['FINANCIAMENTO BANCARIO']}','{row['Tipologia']}','{row['STATUS']}')
+
+            """
+
+            cur.execute(sql_insert)
+
+        con.commit()
+
 
     def converter_para_serializavel(self, obj):
         if isinstance(obj, pd.Timestamp):
@@ -84,25 +225,24 @@ class Api:
 
     def dadosApi(self):
 
-        authcookie = Office365('https://cityinc123.sharepoint.com', username='inovacao.sistemas@cityinc.com.br',
-                               password='Zat41304').GetCookies()
-        site = Site('https://cityinc123.sharepoint.com/inovacao-sistemas/', version=Version.v365, authcookie=authcookie)
+        con = self.conexao_bd_sqlite()
 
-        pasta = site.Folder('Documentos Compartilhados/Compartilhado/Comercial')
+        # sql_tabela_de_vendas = "SELECT * FROM tabelaDeVendas"
 
-        df_consulta = self.tabelaDisponivel()
-        df_consulta = df_consulta[["Empresa", "Obra", "Unidade"]]
-
-        df_tabela_vendas_0 = pd.read_excel(pasta.get_file('Planilha padrão -  Tabela de Venda.xlsx'), sheet_name="Tabela de vendas")
-        df_cadastro_vendas = pd.read_excel(pasta.get_file('Planilha padrão -  Tabela de Venda.xlsx'), sheet_name="Cadastro")
+        df_tabela_vendas_0 = self.tabela_de_vendas_sharepoint("Tabela de vendas")
+        df_cadastro_vendas = self.tabela_de_vendas_sharepoint("Cadastro")
 
         df_tabela_vendas_0["Empreendimento"] = df_tabela_vendas_0["Empreendimento"].astype(str)
-        df_consulta["Empresa"] = df_consulta["Empresa"].astype(str)
-
         df_tabela_vendas_0["Obra"] = df_tabela_vendas_0["Obra"].astype(str)
-        df_consulta["Obra"] = df_consulta["Obra"].astype(str)
-
         df_tabela_vendas_0["Unidade"] = df_tabela_vendas_0["Unidade"].astype(str)
+
+        sqlite_disponiveis = "SELECT * FROM tabelaVendasDisponiveis"
+
+        df_consulta = pd.read_sql(sqlite_disponiveis, con)
+        df_consulta = df_consulta[["Empresa", "Obra", "Unidade", "NOMEFANTASIA_EMP"]]
+
+        df_consulta["Empresa"] = df_consulta["Empresa"].astype(str)
+        df_consulta["Obra"] = df_consulta["Obra"].astype(str)
         df_consulta["Unidade"] = df_consulta["Unidade"].astype(str)
 
         df_tabela_vendas = pd.merge(left=df_tabela_vendas_0, right=df_consulta, how="inner", left_on=["Empreendimento", "Obra", "Unidade"], right_on=["Empresa", "Obra", "Unidade"])
@@ -110,8 +250,10 @@ class Api:
         df_cadastro_vendas["Empreendimento"] = df_cadastro_vendas["Empreendimento"].astype(str)
         df_tabela_vendas["Empreendimento"] = df_tabela_vendas["Empreendimento"].astype(str)
 
-        json_estrutura = {}
+        df_tabela_vendas = df_tabela_vendas.fillna("NULL")
+        df_cadastro_vendas = df_cadastro_vendas.fillna("NULL")
 
+        json_estrutura = {}
         for empreendimento, grupo in df_tabela_vendas.groupby("Empreendimento"):
             unidades = grupo.to_dict(orient="records")
 
@@ -127,4 +269,4 @@ class Api:
             json.dump(json_estrutura, f, indent=4, ensure_ascii=False, default=self.converter_para_serializavel)
 
         return json_estrutura
-        # return df_tabela_vendas
+
