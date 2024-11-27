@@ -65,7 +65,7 @@ ROOT_URLCONF = 'siteCity.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["portalCorretoresHypno/templates/portalCorretoresHypno"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -138,7 +138,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "portalCorretoresHypno/static/"
+    BASE_DIR / "portalCorretoresHypno/static/",
+    BASE_DIR / "static/portalCorretoresHypno/",
+    BASE_DIR / "var/www/static/",
 ]
 
 STATIC_ROOT = "/root/projeto/City-Web/static/"
@@ -151,12 +153,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ROLEPERMISSIONS_MODULE = "siteCity.roles"
 
 
-SECURE_SSL_REDIRECT = False
+SECURE_SSL_REDIRECT = True
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
     "http://192.168.100.159:8000",
     "http://cityinc.ddns.net:8000",
     "https://city-solucoes.com"
@@ -182,9 +183,3 @@ CORS_ALLOW_METHODS = [
     "DELETE",
     "OPTIONS"
 ]
-
-
-try:
-    from .local_settings import *
-except:
-    pass
