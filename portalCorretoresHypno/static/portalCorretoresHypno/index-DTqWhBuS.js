@@ -9700,7 +9700,7 @@ function rp() {
         u(S);
     }, [l]);
   async function s() {
-    fetch("http://192.168.100.159:8000/tabela-de-vendas/dados", {
+    fetch("http://cityinc.ddns.net:8000/tabela-de-vendas/dados", {
       headers: {
         "Content-type": "application/json",
         "Access-Control-Allow-Origin": "*",
