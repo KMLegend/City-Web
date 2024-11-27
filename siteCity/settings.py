@@ -138,12 +138,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "portalCorretoresHypno/static/",
-    BASE_DIR / "static/portalCorretoresHypno/",
-    "var/www/static/",
+    BASE_DIR / "portalCorretoresHypno/static/"
 ]
 
-STATIC_ROOT = "/root/projeto/City-Web/static"
+STATIC_ROOT = BASE_DIR / "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/pt-br/5.1/ref/settings/#default-auto-field
