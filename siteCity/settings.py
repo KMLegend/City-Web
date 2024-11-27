@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*', 'city-solucoes.com', 'www.city-solucoes.com']
 
@@ -38,7 +38,6 @@ ALLOWED_HOSTS = ['*', 'city-solucoes.com', 'www.city-solucoes.com']
 
 INSTALLED_APPS = [
     'portalCorretoresHypno.apps.PortalcorretoreshypnoConfig',
-    'hubPrincipal',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -86,19 +85,19 @@ WSGI_APPLICATION = 'siteCity.wsgi.application'
 # https://docs.djangoproject.com/pt-br/5.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # },
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
+     },
 
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sitecity',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'admin',
-        'PASSWORD': 'q5c1uDY7mz1mXWZ8gEgd',
-    }
+    #'default': {
+    #    'ENGINE': 'django.db.backends.mysql',
+    #    'NAME': 'sitecity',
+    #    'HOST': '127.0.0.1',
+    #    'PORT': '3306',
+    #    'USER': 'admin',
+    #    'PASSWORD': 'q5c1uDY7mz1mXWZ8gEgd',
+    #}
 }
 
 
@@ -142,7 +141,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "portalCorretoresHypno/static/"
 ]
 
-STATIC_ROOT = BASE_DIR / "static/"
+STATIC_ROOT = "/root/projeto/City-Web/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/pt-br/5.1/ref/settings/#default-auto-field
@@ -159,7 +158,8 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://192.168.100.159:8000",
-    "http://cityinc.ddns.net:8000"
+    "http://cityinc.ddns.net:8000",
+    "https://city-solucoes.com"
 ]
 
 CORS_ALLOW_HEADERS = (
@@ -183,7 +183,6 @@ CORS_ALLOW_METHODS = [
     "OPTIONS"
 ]
 
-SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
 try:
     from .local_settings import *
