@@ -65,7 +65,7 @@ ROOT_URLCONF = 'siteCity.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["portalCorretoresHypno/templates/portalCorretoresHypno"],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,10 +140,10 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "portalCorretoresHypno/static/",
     BASE_DIR / "static/portalCorretoresHypno/",
-    BASE_DIR / "var/www/static/",
+    "var/www/static/",
 ]
 
-STATIC_ROOT = "/root/projeto/City-Web/static/"
+STATIC_ROOT = "/root/projeto/City-Web/static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/pt-br/5.1/ref/settings/#default-auto-field
