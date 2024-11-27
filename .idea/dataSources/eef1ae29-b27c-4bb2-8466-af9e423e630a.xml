@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="UAU@SRV-SQL01">
+  <database-model serializer="dbm" dbms="MSSQL" family-id="MSSQL" format-version="4.53">
+    <root id="1">
+      <ServerVersion>11.0.2100</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="Aplicativo_de_Serviço_de_Pesquisa_AnalyticsReportingStoreDB_01384b88bbfd4e8ea2a550c5adc980be">
+      <ObjectId>20</ObjectId>
+      <CollationName>Latin1_General_CI_AS_KS_WS</CollationName>
+    </database>
+    <database id="3" parent="1" name="Aplicativo_de_Serviço_de_Pesquisa_CrawlStoreDB_85defd4631724f4f98b695d08f0689df">
+      <ObjectId>19</ObjectId>
+      <CollationName>Latin1_General_CI_AS_KS_WS</CollationName>
+    </database>
+    <database id="4" parent="1" name="Aplicativo_de_Serviço_de_Pesquisa_DB_600f9158aea3461b9284d3447cb640d3">
+      <ObjectId>18</ObjectId>
+      <CollationName>Latin1_General_CI_AS_KS_WS</CollationName>
+    </database>
+    <database id="5" parent="1" name="Aplicativo_de_Serviço_de_Pesquisa_LinksStoreDB_f719181578754be98afd592424c32362">
+      <ObjectId>21</ObjectId>
+      <CollationName>Latin1_General_CI_AS_KS_WS</CollationName>
+    </database>
+    <database id="6" parent="1" name="AppMng_Service_DB_07c49b8b81e64e168ee72d453ea6c449">
+      <ObjectId>12</ObjectId>
+      <CollationName>Latin1_General_CI_AS_KS_WS</CollationName>
+    </database>
+    <database id="7" parent="1" name="BI">
+      <ObjectId>29</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AI</CollationName>
+    </database>
+    <database id="8" parent="1" name="Bdc_Service_DB_055bb109fb1142f4b6c358251c997a4d">
+      <ObjectId>9</ObjectId>
+      <CollationName>Latin1_General_CI_AS_KS_WS</CollationName>
+    </database>
+    <database id="9" parent="1" name="Comercializacao">
+      <ObjectId>22</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AI</CollationName>
+    </database>
+    <database id="10" parent="1" name="DataLake">
+      <ObjectId>23</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AS</CollationName>
+    </database>
+    <database id="11" parent="1" name="Dynamics">
+      <ObjectId>24</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AI</CollationName>
+    </database>
+    <database id="12" parent="1" name="HCM">
+      <ObjectId>28</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AI</CollationName>
+    </database>
+    <database id="13" parent="1" name="Hypnobox">
+      <ObjectId>27</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AI</CollationName>
+    </database>
+    <database id="14" parent="1" name="ReportServer">
+      <ObjectId>15</ObjectId>
+      <CollationName>Latin1_General_100_CI_AS_KS_WS</CollationName>
+    </database>
+    <database id="15" parent="1" name="ReportServerTempDB">
+      <ObjectId>16</ObjectId>
+      <CollationName>Latin1_General_100_CI_AS_KS_WS</CollationName>
+    </database>
+    <database id="16" parent="1" name="Secure_Store_Service_DB_67b13bd4da8e4988adc9a6d1871bf817">
+      <ObjectId>8</ObjectId>
+      <CollationName>Latin1_General_CI_AS_KS_WS</CollationName>
+    </database>
+    <database id="17" parent="1" name="SharePoint_AdminContent_bc1d4a66-f896-4a98-a4e4-3e3ebb4d514c">
+      <ObjectId>11</ObjectId>
+      <CollationName>Latin1_General_CI_AS_KS_WS</CollationName>
+    </database>
+    <database id="18" parent="1" name="SharePoint_Config">
+      <ObjectId>10</ObjectId>
+      <CollationName>Latin1_General_CI_AS_KS_WS</CollationName>
+    </database>
+    <database id="19" parent="1" name="SistemasAPI">
+      <ObjectId>26</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AS</CollationName>
+    </database>
+    <database id="20" parent="1" name="StateService_53e28c35d98b4c35bbe6e195f814b983">
+      <ObjectId>6</ObjectId>
+      <CollationName>Latin1_General_CI_AS_KS_WS</CollationName>
+    </database>
+    <database id="21" parent="1" name="UAU">
+      <Current>1</Current>
+      <ObjectId>5</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AI</CollationName>
+    </database>
+    <database id="22" parent="1" name="UAUCalc">
+      <ObjectId>17</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AI</CollationName>
+    </database>
+    <database id="23" parent="1" name="UAURestore-V2">
+      <ObjectId>25</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AI</CollationName>
+    </database>
+    <database id="24" parent="1" name="UAUTeste">
+      <ObjectId>14</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AI</CollationName>
+    </database>
+    <database id="25" parent="1" name="WSS_Content">
+      <ObjectId>7</ObjectId>
+      <CollationName>Latin1_General_CI_AS_KS_WS</CollationName>
+    </database>
+    <database id="26" parent="1" name="WSS_UsageApplication">
+      <ObjectId>13</ObjectId>
+      <CollationName>Latin1_General_CI_AS_KS_WS</CollationName>
+    </database>
+    <database id="27" parent="1" name="master">
+      <ObjectId>1</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AS</CollationName>
+    </database>
+    <database id="28" parent="1" name="model">
+      <ObjectId>3</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AS</CollationName>
+    </database>
+    <database id="29" parent="1" name="msdb">
+      <ObjectId>4</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AS</CollationName>
+    </database>
+    <database id="30" parent="1" name="tempdb">
+      <ObjectId>2</ObjectId>
+      <CollationName>SQL_Latin1_General_CP1_CI_AS</CollationName>
+    </database>
+    <schema id="31" parent="21" name="INFORMATION_SCHEMA">
+      <ObjectId>3</ObjectId>
+    </schema>
+    <schema id="32" parent="21" name="db_accessadmin">
+      <ObjectId>16385</ObjectId>
+    </schema>
+    <schema id="33" parent="21" name="db_backupoperator">
+      <ObjectId>16389</ObjectId>
+    </schema>
+    <schema id="34" parent="21" name="db_datareader">
+      <ObjectId>16390</ObjectId>
+    </schema>
+    <schema id="35" parent="21" name="db_datawriter">
+      <ObjectId>16391</ObjectId>
+    </schema>
+    <schema id="36" parent="21" name="db_ddladmin">
+      <ObjectId>16387</ObjectId>
+    </schema>
+    <schema id="37" parent="21" name="db_denydatareader">
+      <ObjectId>16392</ObjectId>
+    </schema>
+    <schema id="38" parent="21" name="db_denydatawriter">
+      <ObjectId>16393</ObjectId>
+    </schema>
+    <schema id="39" parent="21" name="db_owner">
+      <ObjectId>16384</ObjectId>
+    </schema>
+    <schema id="40" parent="21" name="db_securityadmin">
+      <ObjectId>16386</ObjectId>
+    </schema>
+    <schema id="41" parent="21" name="dbo">
+      <ObjectId>1</ObjectId>
+    </schema>
+    <schema id="42" parent="21" name="guest">
+      <ObjectId>2</ObjectId>
+    </schema>
+    <schema id="43" parent="21" name="sys">
+      <ObjectId>4</ObjectId>
+    </schema>
+    <schema id="44" parent="21" name="uau">
+      <ObjectId>6</ObjectId>
+    </schema>
+    <schema id="45" parent="21" name="usruau">
+      <Current>1</Current>
+      <ObjectId>5</ObjectId>
+    </schema>
+  </database-model>
+</dataSource>

@@ -32,8 +32,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '192.168.100.36', '192.168.100.159', 'cityinc.ddns.net']
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -174,3 +173,5 @@ CORS_ALLOW_METHODS = [
     "DELETE",
     "OPTIONS"
 ]
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None

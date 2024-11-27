@@ -239,6 +239,7 @@ class Api:
         sqlite_disponiveis = "SELECT * FROM tabelaVendasDisponiveis"
 
         df_consulta = pd.read_sql(sqlite_disponiveis, con)
+        df_consulta.rename(columns={'NomeFantasia':'NOMEFANTASIA_EMP'}, inplace=True)
         df_consulta = df_consulta[["Empresa", "Obra", "Unidade", "NOMEFANTASIA_EMP"]]
 
         df_consulta["Empresa"] = df_consulta["Empresa"].astype(str)
