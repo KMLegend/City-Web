@@ -61,7 +61,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'siteCity.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -85,19 +84,10 @@ WSGI_APPLICATION = 'siteCity.wsgi.application'
 # https://docs.djangoproject.com/pt-br/5.1/ref/settings/#databases
 
 DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': BASE_DIR / 'db.sqlite3',
-     },
-
-    #'default': {
-    #    'ENGINE': 'django.db.backends.mysql',
-    #    'NAME': 'sitecity',
-    #    'HOST': '127.0.0.1',
-    #    'PORT': '3306',
-    #    'USER': 'admin',
-    #    'PASSWORD': 'q5c1uDY7mz1mXWZ8gEgd',
-    #}
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
