@@ -1,19 +1,17 @@
-{% load static %}
-
 <!doctype html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="{% static 'portalCorretoresHypno/Rectangle-BMENXEXM.svg' %}" />
+    <link rel="icon" type="image/svg+xml" href="{% include 'portalCorretoresHypno/Rectangle-BMENXEXM.svg' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tabela de Vendas</title>
     <script>
-      const imageUrl = "{% static 'portalCorretoresHypno/main_page_picture.png'  %}"
-      const imageUrlLogo = "{% static 'portalCorretoresHypno/logo.png'  %}"
-      const imageUrlsvg = "{% static 'portalCorretoresHypno/Rectangle.svg' %}"
+      const imageUrl = "{% include 'portalCorretoresHypno/main_page_picture.png'  %}"
+      const imageUrlLogo = "{% include 'portalCorretoresHypno/logo.png'  %}"
+      const imageUrlsvg = "{% include 'portalCorretoresHypno/Rectangle.svg' %}"
     </script>
-    <script type="module" crossorigin src=".{% static 'portalCorretoresHypno/index-DTqWhBuS.js'  %}"></script>
-    <link rel="stylesheet" crossorigin href=".{% static 'portalCorretoresHypno/index-DxXPDrpy.css' %}">
+    <script type="module" crossorigin src="{% include 'portalCorretoresHypno/index-DTqWhBuS.js'  %}"></script>
+    <link rel="stylesheet" crossorigin href="{% include 'portalCorretoresHypno/index-DxXPDrpy.css' %}">
   </head>
   <body>
     <div id="root"></div>
