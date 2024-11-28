@@ -9700,7 +9700,7 @@ function rp() {
         u(S);
     }, [l]);
   async function s() {
-    fetch("http://city-solucoes.com/tabela-de-vendas/dados", {
+    fetch("http://46.202.149.159:8000/tabela-de-vendas/dados", {
       headers: {
         "Content-type": "application/json",
         "Access-Control-Allow-Origin": "*",
