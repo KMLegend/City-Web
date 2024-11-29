@@ -167,7 +167,7 @@ class Api:
         con = self.conexao_bd_sqlite()
         cur = con.cursor()
         df_consulta = self.tabela_de_vendas_sharepoint("Tabela de vendas")
-
+        print(df_consulta.columns)
         truncate = """
         DROP TABLE tabelaDeVendas;
         """
@@ -181,6 +181,7 @@ class Api:
             Area Privativa Total (m2)  float,
             Area Apart. (m2)  float,
             Area descoberta (m2)  float,
+            Area Varanda Coberta (m²) float,
             Vagas de Garagem  varchar(255),
             PVTO VAGAS  varchar(255),
             ESC. GAR.  varchar(255),
@@ -248,6 +249,9 @@ class Api:
 
         df_tabela_vendas = pd.merge(left=df_tabela_vendas_0, right=df_consulta, how="inner", left_on=["Empreendimento", "Obra", "Unidade"], right_on=["Empresa", "Obra", "Unidade"])
 
+        if 'Excecao' in df_tabela_vendas.columns:
+            df_tabela_vendas = df_tabela_vendas[df_tabela_vendas["Excecao"] != "sim"]
+
         df_cadastro_vendas["Empreendimento"] = df_cadastro_vendas["Empreendimento"].astype(str)
         df_tabela_vendas["Empreendimento"] = df_tabela_vendas["Empreendimento"].astype(str)
 
@@ -270,4 +274,3 @@ class Api:
             json.dump(json_estrutura, f, indent=4, ensure_ascii=False, default=self.converter_para_serializavel)
 
         return json_estrutura
-
