@@ -1,0 +1,106 @@
+@font-face {
+  font-family: 'Halyard';
+  src: url('/static/fonts/Halyard Micro Regular.ttf') format('truetype'); /* Use 'truetype' para arquivos .ttf */
+}
+
+body {
+  background-color: #383838;
+  margin: 0;
+  padding: 0;
+  font-family: 'Halyard';
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+nav {
+    margin: 2%;
+    margin-top: 4%;
+    text-align: end;
+}
+#logo_city{
+    width: 60px;
+    height: 75px;
+}
+
+#Home{
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+    font-size: 24;
+    width: 74px;
+    height: 39px;
+    margin-right: 2%;
+    margin-top: 2%;
+    color: #fafafa;
+}
+
+#Tabela_vendas{
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+    font-size: 24;
+    width: 240px;
+    height: 48px;
+    color: #fafafa;
+    margin-right: 4%;
+}
+
+.cabecario {
+    width: 60px;
+    height: 75px;
+    margin: 2%;
+}
+
+.conteiner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 87vh;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    height: 87vh;
+    align-items: start;
+    justify-content: center;
+    
+  }
+  
+  .h1 {
+    font-size: 48px;
+    margin-bottom: 1rem;
+    position: relative;
+    bottom: 215px;
+    color: #FAFAFA;
+    font-family: 'Halyard';
+    left: 168px;
+  }
+  
+  p {
+    font-size: 36px;
+    line-height: 1.5;
+    font-family: 'Halyard';
+    position: relative;
+    left: 168px;
+    bottom: 240px;
+    color: #FAFAFA;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    padding: 0;
+    margin: 0;
+    height: 88vh;
+  }
+  
+  #Grafismo {
+    width: 600px;
+    height: 743px;
+  }

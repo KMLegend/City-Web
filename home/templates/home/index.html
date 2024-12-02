@@ -6,19 +6,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>City Soluções Urbanas</title>
-    <link rel="stylesheet" href="{% static 'home/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
-  <body>
+  <header>
     <div class="cabecario">
-        <img id="logo_city"
-        src="{% static 'home/CITY_SOLUCOES_UBARNAS_VERSAO_PREFERENCIAL_NEGATIVA.png' %}"
+      <img
+        id="logo_city"
+        src="{% static 'css/PIN.png' %}"
         alt="Logo da City Soluções Urbanas"
       />
     </div>
+    <nav>
+      <a href="https://city-solucoes.com" id="Home">Home</a>
+      <a href="https://city-solucoes.com/tabela-de-vendas" id="Tabela_vendas"
+        >Tabela de Vendas</a
+      >
+    </nav>
+  </header>
+  <body>
+    <div class="conteiner">
+        <div class="text-content">
+          <p class="h1">Bem vindo(a)</p>
+          <p>
+            Acesse agora a tabela de vendas no menu <br> superior para consultar as
+            unidades <br> disponíveis.
+          </p>
+        </div>
+        <div class="image-container">
+          <img src="{% static 'css/Grafismo.png' %}" alt="Grafismo City" id="Grafismo">
+        </div>
+      </div>
   </body>
   <footer>
-    <div id="rodape">
-        
-    </div>
+    <div id="rodape"></div>
   </footer>
 </html>
