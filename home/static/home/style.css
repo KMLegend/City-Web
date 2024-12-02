@@ -1,0 +1,16 @@
+body {
+  background-color: #696d6d;
+  margin: 0;
+}
+
+.cabecario {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo_city {
+}
