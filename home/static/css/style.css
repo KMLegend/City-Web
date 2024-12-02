@@ -10,97 +10,166 @@ body {
   font-family: 'Halyard';
 }
 
+/* Cabeçalho */
 header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-items: center;
 }
 
 nav {
-    margin: 2%;
-    margin-top: 4%;
-    text-align: end;
-}
-#logo_city{
-    width: 60px;
-    height: 75px;
+  margin: 2%;
+  margin-top: 4%;
+  text-align: end;
 }
 
-#Home{
-    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
-    font-size: 24;
-    width: 74px;
-    height: 39px;
-    margin-right: 2%;
-    margin-top: 2%;
-    color: #fafafa;
+#logo_city {
+  width: 60px;
+  height: 75px;
 }
 
-#Tabela_vendas{
-    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
-    font-size: 24;
-    width: 240px;
-    height: 48px;
-    color: #fafafa;
-    margin-right: 4%;
+#Home,
+#Tabela_vendas {
+  font-family: 'Halyard';
+  font-size: 1.2rem;
+  color: #fafafa;
+  margin-right: 2%;
 }
 
+#Tabela_vendas {
+  margin-right: 4%;
+}
+
+/* Cabeçalho fixo para manter layout em todas as telas */
 .cabecario {
-    width: 60px;
-    height: 75px;
-    margin: 2%;
+  width: 60px;
+  height: 75px;
+  margin: 2%;
 }
 
+/* Conteúdo principal */
 .conteiner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 87vh;
-    align-items: center;
-    padding: 0;
-    margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: calc(87vh - 120px);
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  position: relative;
+  bottom: 215px;
+  color: #FAFAFA;
+  font-family: 'Halyard';
+  left: 168px;
+}
+
+p {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  font-family: 'Halyard';
+  position: relative;
+  left: 168px;
+  bottom: 240px;
+  color: #FAFAFA;
+}
+
+.image-container {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  padding: 0;
+  margin: 0;
+  height: 88vh;
+}
+
+#Grafismo {
+  width: 600px;
+  height: 743px;
+}
+
+/* Responsividade - Dispositivos menores */
+@media (max-width: 1024px) {
+  .conteiner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    height: auto;
   }
-  
+
   .text-content {
-    display: flex;
-    flex-direction: column;
-    height: 87vh;
-    align-items: start;
-    justify-content: center;
-    
+    align-items: center;
+    position: relative;
+    bottom: 0;
+    left: 0;
   }
-  
+
   .h1 {
-    font-size: 48px;
-    margin-bottom: 1rem;
-    position: relative;
-    bottom: 215px;
-    color: #FAFAFA;
-    font-family: 'Halyard';
-    left: 168px;
+    font-size: 2.5rem;
+    bottom: 0;
+    left: 0;
   }
-  
+
   p {
-    font-size: 36px;
-    line-height: 1.5;
-    font-family: 'Halyard';
-    position: relative;
-    left: 168px;
-    bottom: 240px;
-    color: #FAFAFA;
+    font-size: 1.2rem;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    padding: 0 1rem;
   }
-  
+
   .image-container {
-    display: flex;
-    justify-content: end;
-    align-items: end;
-    padding: 0;
-    margin: 0;
-    height: 88vh;
+    justify-content: center;
+    align-items: center;
+    height: auto;
   }
-  
+
   #Grafismo {
-    width: 600px;
-    height: 743px;
+    width: 80%;
+    height: auto;
   }
+}
+
+@media (max-width: 768px) {
+  nav {
+    text-align: center;
+    margin: 0;
+  }
+
+  #Home,
+  #Tabela_vendas {
+    display: inline-block;
+    font-size: 1rem;
+    margin: 0 1rem;
+  }
+
+  .conteiner {
+    height: auto;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  #Grafismo {
+    width: 100%;
+    height: auto;
+  }
+}
