@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rolepermissions',
     'corsheaders',
-    'home'
+    'home',
+    'api',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -148,7 +150,6 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://192.168.100.159:8000",
-    "http://cityinc.ddns.net:8000",
     "https://city-solucoes.com"
 ]
 
