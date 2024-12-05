@@ -7,11 +7,12 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from Classes.BaseApi import Api
+import requests
 
 api = Api()
 
 while True:
-
+    url = 'https://city-solucoes.com'
     atualizar_tabela = api.tabela_disponivel_sqlite()
 
     agora = datetime.now()
