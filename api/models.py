@@ -4,14 +4,14 @@ from django.db import models
 class Disponiveis_tabela_vendas(models.Model):
     produto = models.IntegerField(default=0)
     empresa = models.IntegerField(default=0)
-    nome_fantasia = models.CharField(max_length=150)
+    nome_fantasia = models.CharField(max_length=150, default='')
     obra = models.CharField(max_length=10, default='')
-    unidade = models.CharField(max_length=10, default='')
+    unidade = models.CharField(max_length=100, default='')
     tipo = models.CharField(max_length=60, default='')
     cod_tipologia = models.IntegerField(default=0)
     tipologia = models.CharField(max_length=60, default='')
     status = models.CharField(max_length=100, default='')
-    data_insercao = models.DateTimeField()
+    # data_insercao = models.DateTimeField()
 
     def __str__(self):
         return f'{self.produto}, {self.empresa}, {self.nome_fantasia}, {self.obra}, {self.unidade}, {self.tipo}, {self.cod_tipologia}, {self.tipologia}, {self.status}, {self.data_insercao}'

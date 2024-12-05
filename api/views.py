@@ -41,22 +41,13 @@ def get_empresa(request, empresa):
 def disponiveis_manager(request):
 
     if request.method == 'GET':
-        try:
-            if request.GET['empresa']:
-                empresa_cod = request.GET['empresa']
+        if request.method == 'GET':
+            disponiveis = Disponiveis_tabela_vendas.objects.all()
 
-                try:
-                    empresa = Disponiveis_tabela_vendas.objects.filter(empresa=empresa_cod)
-                except:
-                    return Response(status=status.HTTP_404_NOT_FOUND)
+            serializer = Disponiveis_tabela_vendasSerializer(disponiveis, many=True)
+            return Response(serializer.data)
 
-                serializer = Disponiveis_tabela_vendasSerializer(empresa, many=True)
-                return Response(serializer.data)
-            else:
-                return Response(status=status.HTTP_400_BAD_REQUEST)
-
-        except:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == 'POST':
         new_emp = request.data
