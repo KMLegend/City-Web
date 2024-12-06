@@ -9604,19 +9604,19 @@ function b4() {
               xA.jsxs("div", {
                 className: A,
                 children: [
-                  "Visite o ",
-                  xA.jsx("span", {
-                    className:
-                      "font-caslon text-stone-800 font-semibold italic",
-                    children: "decorado",
-                  }),
+                  "Visite nossas "
                 ],
               }),
               xA.jsx("div", {
                 className: A,
-                children: "na Central de Decorados Vaca",
+                children: ["centrais de ",
+                  xA.jsx("span", {
+                  className:
+                    "font-caslon text-stone-800 font-semibold italic",
+                  children: "decorados",
+                })]
               }),
-              xA.jsx("div", { className: A, children: "Brava" }),
+              
             ],
           }),
           xA.jsxs("div", {
