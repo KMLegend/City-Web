@@ -232,7 +232,7 @@ class Api:
         df_tabela_vendas_0["Unidade"] = df_tabela_vendas_0["Unidade"].astype(str)
 
         df_tabela_vendas = pd.merge(left=df_tabela_vendas_0, right=df_consulta, how="inner", left_on=["Empreendimento", "Obra", "Unidade"], right_on=["Empresa", "Obra", "Unidade"])
-        # print(df_consulta)
+        print(df_tabela_vendas)
 
         if 'Excecao' in df_tabela_vendas.columns:
             df_tabela_vendas = df_tabela_vendas[df_tabela_vendas["Excecao"] != "sim"]

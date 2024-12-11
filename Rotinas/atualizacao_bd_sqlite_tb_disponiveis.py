@@ -35,11 +35,11 @@ def post(url_api):
     for _, row in dados.iterrows():
         # Criando um dicionário para cada registro
         data = {
-            'produto': row['produto'],
-            'empresa': row['empresa'],
-            'nome_fantasia': row['nome_fantasia'],
-            'obra': row['obra'],
-            'unidade': row['unidade'],
+            'Produto': row['Produto'],
+            'Empresa': row['Empresa'],
+            'NomeFantasia': row['NomeFantasia'],
+            'Obra': row['Obra'],
+            'Unidade': row['Unidade'],
             'tipo': row['tipo'],
             'cod_tipologia': row['cod_tipologia'],
             'tipologia': row['tipologia'],
@@ -57,11 +57,18 @@ def post(url_api):
     return response.status_code
 def delete(url_api):
     df = api.tabela_disponivel_sqlite()
+    # print(df)
     for _, row in df.iterrows():
-        response = requests.delete(url_api + str(row["id"]), headers={'Content-Type': 'application/json'})
-        return response.status_code
+        data = {
+            'id': row['id']
+        }
+
+        response = requests.delete(url_api, json=data, headers={'Content-Type': 'application/json'})
+        # print(response.text)
+
+    return response.status_code
 # while True:
-url_api = 'https://city-solucoes.com/api/data/'
+url_api = 'http://127.0.0.1:8000/api/data/'
 # print(delete(url_api))
 print(post(url_api))
 
