@@ -210,6 +210,20 @@ class Api:
 
         df_consulta = pd.read_sql(sqlite_disponiveis, con)
         # df_consulta = self.tabela_disponivel()
+        novos_nomes = [
+            'produto',
+            'Empresa',
+            'NOMEFANTASIA_EMP',
+            'Obra',
+            'Unidade',
+            'tipo',
+            'cod_tipologia',
+            'tipologia',
+            'status'
+        ]
+
+        # Renomeando as colunas
+        df_consulta.columns = novos_nomes
         df_consulta.rename(columns={'NomeFantasia':'NOMEFANTASIA_EMP'}, inplace=True)
         df_consulta = df_consulta[["Empresa", "Obra", "Unidade", "NOMEFANTASIA_EMP"]]
 
