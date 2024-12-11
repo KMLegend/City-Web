@@ -211,9 +211,10 @@ class Api:
         df_consulta = pd.read_sql(sqlite_disponiveis, con)
         # df_consulta = self.tabela_disponivel()
         novos_nomes = [
+            'id',
             'produto',
             'Empresa',
-            'NOMEFANTASIA_EMP',
+            'NomeFantasia',
             'Obra',
             'Unidade',
             'tipo',
@@ -224,6 +225,7 @@ class Api:
 
         # Renomeando as colunas
         df_consulta.columns = novos_nomes
+        # print(df_consulta)
         df_consulta.rename(columns={'NomeFantasia':'NOMEFANTASIA_EMP'}, inplace=True)
         df_consulta = df_consulta[["Empresa", "Obra", "Unidade", "NOMEFANTASIA_EMP"]]
 
