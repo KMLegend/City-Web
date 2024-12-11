@@ -10,9 +10,9 @@ from Classes.BaseApi import Api
 
 api = Api()
 
-atualizar_tabela = api.tabela_vendas_sqlite()
-
+atualizar_tabela = api.dadosApi()
+print(atualizar_tabela)
 agora = datetime.now()
 print(f"Atualizado em: {agora.strftime('%Y-%m-%d %H:%M:%S')}")
 
-time.sleep(20)
+# time.sleep(20)

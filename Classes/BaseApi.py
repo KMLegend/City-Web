@@ -117,40 +117,9 @@ class Api:
 
     def tabela_disponivel_sqlite(self):
         con = self.conexao_bd_sqlite()
-        cur = con.cursor()
-        df_consulta = self.tabela_disponivel()
-
-        truncate = """
-        DROP TABLE tabelaVendasDisponiveis;
-        """
-        sql_create = """
-        CREATE TABLE tabelaVendasDisponiveis (
-            Produto varchar(255),
-            Empresa varchar(255),
-            Obra varchar(255),
-            NomeFantasia varchar(255),
-            Unidade varchar(255),
-            Tipo varchar(255),
-            Cod_tipologia varchar(255),
-            Tipologia varchar(255),
-            Status varchar(255)
-        )
-        """
-
-        cur.execute(truncate)
-        cur.execute(sql_create)
-
-        for index, row in df_consulta.iterrows():
-            # print(row)
-            sql_insert = f"""
-            
-            INSERT INTO tabelaVendasDisponiveis VALUES ('{row['Produto']}','{row['Empresa']}','{row['Obra']}', '{row['NomeFantasia']}','{row['Unidade']}','{row['Tipo']}','{row['Cod_Tipologia']}','{row['Tipologia']}', '{row['Status']}')
-            
-            """
-
-            cur.execute(sql_insert)
-
-        con.commit()
+        sql = "SELECT * FROM api_disponiveis_tabela_vendas"
+        df = pd.read_sql(sql, con)
+        return df
 
     def tabela_de_vendas_sharepoint(self, nome_planilha):
         authcookie = Office365('https://cityinc123.sharepoint.com', username='inovacao.sistemas@cityinc.com.br',
@@ -237,9 +206,10 @@ class Api:
         df_tabela_vendas_0["Obra"] = df_tabela_vendas_0["Obra"].astype(str)
         df_tabela_vendas_0["Unidade"] = df_tabela_vendas_0["Unidade"].astype(str)
 
-        sqlite_disponiveis = "SELECT * FROM tabelaVendasDisponiveis"
+        sqlite_disponiveis = "SELECT * FROM api_disponiveis_tabela_vendas"
 
         df_consulta = pd.read_sql(sqlite_disponiveis, con)
+        # df_consulta = self.tabela_disponivel()
         df_consulta.rename(columns={'NomeFantasia':'NOMEFANTASIA_EMP'}, inplace=True)
         df_consulta = df_consulta[["Empresa", "Obra", "Unidade", "NOMEFANTASIA_EMP"]]
 

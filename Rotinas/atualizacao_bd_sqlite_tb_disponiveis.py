@@ -55,9 +55,14 @@ def post(url_api):
 
         # Retornando o código de status
     return response.status_code
-
+def delete(url_api):
+    df = api.tabela_disponivel_sqlite()
+    for _, row in df.iterrows():
+        response = requests.delete(url_api + str(row["id"]), headers={'Content-Type': 'application/json'})
+        return response.status_code
 # while True:
-url_api = 'http://127.0.0.1:8000/api/data/'
+url_api = 'https://city-solucoes.com/api/data/'
+# print(delete(url_api))
 print(post(url_api))
 
 agora = datetime.now()
