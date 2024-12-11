@@ -14,11 +14,11 @@ api = Api()
 def post(url_api):
     dados = api.tabela_disponivel()
     novos_nomes = [
-        'produto',
-        'empresa',
-        'nome_fantasia',
-        'obra',
-        'unidade',
+        'Produto',
+        'Empresa',
+        'NomeFantasia',
+        'Obra',
+        'Unidade',
         'tipo',
         'cod_tipologia',
         'tipologia',

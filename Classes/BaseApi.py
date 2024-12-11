@@ -202,17 +202,13 @@ class Api:
         df_tabela_vendas_0 = self.tabela_de_vendas_sharepoint("Tabela de vendas")
         df_cadastro_vendas = self.tabela_de_vendas_sharepoint("Cadastro")
 
-        df_tabela_vendas_0["Empreendimento"] = df_tabela_vendas_0["Empreendimento"].astype(str)
-        df_tabela_vendas_0["Obra"] = df_tabela_vendas_0["Obra"].astype(str)
-        df_tabela_vendas_0["Unidade"] = df_tabela_vendas_0["Unidade"].astype(str)
-
         sqlite_disponiveis = "SELECT * FROM api_disponiveis_tabela_vendas"
 
         df_consulta = pd.read_sql(sqlite_disponiveis, con)
         # df_consulta = self.tabela_disponivel()
         novos_nomes = [
             'id',
-            'produto',
+            'Produto',
             'Empresa',
             'NomeFantasia',
             'Obra',
@@ -222,10 +218,8 @@ class Api:
             'tipologia',
             'status'
         ]
-
         # Renomeando as colunas
         df_consulta.columns = novos_nomes
-        # print(df_consulta)
         df_consulta.rename(columns={'NomeFantasia':'NOMEFANTASIA_EMP'}, inplace=True)
         df_consulta = df_consulta[["Empresa", "Obra", "Unidade", "NOMEFANTASIA_EMP"]]
 
@@ -233,7 +227,12 @@ class Api:
         df_consulta["Obra"] = df_consulta["Obra"].astype(str)
         df_consulta["Unidade"] = df_consulta["Unidade"].astype(str)
 
+        df_tabela_vendas_0["Empreendimento"] = df_tabela_vendas_0["Empreendimento"].astype(str)
+        df_tabela_vendas_0["Obra"] = df_tabela_vendas_0["Obra"].astype(str)
+        df_tabela_vendas_0["Unidade"] = df_tabela_vendas_0["Unidade"].astype(str)
+
         df_tabela_vendas = pd.merge(left=df_tabela_vendas_0, right=df_consulta, how="inner", left_on=["Empreendimento", "Obra", "Unidade"], right_on=["Empresa", "Obra", "Unidade"])
+        # print(df_consulta)
 
         if 'Excecao' in df_tabela_vendas.columns:
             df_tabela_vendas = df_tabela_vendas[df_tabela_vendas["Excecao"] != "sim"]

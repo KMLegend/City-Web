@@ -2,11 +2,11 @@ from django.db import models
 
 
 class Disponiveis_tabela_vendas(models.Model):
-    produto = models.IntegerField(default=0)
-    empresa = models.IntegerField(default=0)
-    nome_fantasia = models.CharField(max_length=150, default='')
-    obra = models.CharField(max_length=10, default='')
-    unidade = models.CharField(max_length=100, default='')
+    Produto = models.CharField(max_length=6)
+    Empresa = models.CharField(max_length=4)
+    NomeFantasia = models.CharField(max_length=150, default='')
+    Obra = models.CharField(max_length=10, default='')
+    Unidade = models.CharField(max_length=100, default='')
     tipo = models.CharField(max_length=60, default='')
     cod_tipologia = models.IntegerField(default=0)
     tipologia = models.CharField(max_length=60, default='')
