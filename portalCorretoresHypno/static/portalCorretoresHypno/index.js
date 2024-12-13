@@ -18,23 +18,23 @@ const om_emps = [
   let flagFirstRender = false;
 
   let dropdown = document.getElementById("emps");
+  if (dropdown) {
+    dropdown.addEventListener("change", () => {
+        setTimeout(() => {
+        let divPrincipal = document.querySelector(
+            "#emp_display > div.flex.justify-center.align-middle"
+        );
 
-  dropdown.addEventListener("change", () => {
-    setTimeout(() => {
-      let divPrincipal = document.querySelector(
-        "#emp_display > div.flex.justify-center.align-middle"
-      );
+        updateLogo();
 
-      updateLogo();
+        if (!flagFirstRender) {
+            divPrincipal.appendChild(imagemLogo);
 
-      if (!flagFirstRender) {
-        divPrincipal.appendChild(imagemLogo);
-
-        flagFirstRender = true;
-      }
-    }, 500);
-  });
-
+            flagFirstRender = true;
+        }
+        }, 500);
+    });
+}
   function updateLogo() {
     if (om_emps.includes(dropdown.value)) {
       imagemLogo.style.maxWidth = "20vw";
