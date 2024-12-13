@@ -9553,6 +9553,12 @@ let l4 = [
         "HAUT COMPACT LIFE BY CITY",
         "INFINITY BUSINESS",
         "BLANC CASA DESIGN",
+        "EPIC CITY HOME",
+        // "Legend Praça do Sol",
+        "TERRAÇO BOUGAINVILLE",
+        "ATMOS CITY DESIGN",
+        "LEGACY CITY HOME",
+        "CITY RICARDO PARANHOS"
     ];
 const c4 = {
         "CITY PARK PALACE": "Lançamento",
