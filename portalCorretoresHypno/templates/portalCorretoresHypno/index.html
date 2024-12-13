@@ -1,119 +1,150 @@
 {% load static %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="{% static 'imagens/Rectangle-BMENXEXM.svg' %}" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{% static 'imagens/Rectangle-BMENXEXM.svg' %}"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tabela de Vendas</title>
     <script>
-      const imgUrlAtmos = "{% static 'imagens/ATMOS CITY DESIGN.foto.png'  %}"
-      const imgUrlAtmosLogo = "{% static 'imagens/ATMOS CITY DESIGN.logo.png'  %}"
-      const imgUrlAzure = "{% static 'imagens/AZURE COMPACT LIFE.foto.png'  %}"
-      const imgUrlAzureLogo = "{% static 'imagens/AZURE COMPACT LIFE.logo.png'  %}"
-      const imgUrlBlanc = "{% static 'imagens/BLANC CASA DESIGN.foto.png'  %}"
-      const imgUrlBlancLogo = "{% static 'imagens/BLANC CASA DESIGN.logo.png'  %}"
-      const imgUrlGarten = "{% static 'imagens/CITY GARTEN.foto.png'  %}"
-      const imgUrlGartenLogo = "{% static 'imagens/CITY GARTEN.logo.png'  %}"
-      const imgUrlHouse = "{% static 'imagens/CITY HOUSE.foto.png'  %}"
-      const imgUrlHouseLogo = "{% static 'imagens/CITY HOUSE.logo.png'  %}"
-      const imgUrlPMajestic = "{% static 'imagens/CITY PARK MAJESTIC.foto.png'  %}"
-      const imgUrlPMajesticLogo = "{% static 'imagens/CITY PARK MAJESTIC.logo.png'  %}"
-      const imgUrlPPalace = "{% static 'imagens/CITY PARK PALACE.foto.png'  %}"
-      const imgUrlPPalaceLogo = "{% static 'imagens/CITY PARK PALACE.logo.png'  %}"
-      const imgUrlRP = "{% static 'imagens/CITY RICARDO PARANHOS.foto.png'  %}"
-      const imgUrlRPLogo = "{% static 'imagens/CITY RICARDO PARANHOS.logo.png'  %}"
-      const imgUrlWay = "{% static 'imagens/CITY WAY.foto.png'  %}"
-      const imgUrlWayLogo = "{% static 'imagens/CITY WAY.logo.png'  %}"
-      const imgUrlEpic = "{% static 'imagens/EPIC CITY HOME.foto.png'  %}"
-      const imgUrlEpicLogo = "{% static 'imagens/EPIC CITY HOME.logo.png'  %}"
-      const imgUrlHaut = "{% static 'imagens/HAUT COMPACT LIFE BY CITY.foto.png'  %}"
-      const imgUrlHautLogo = "{% static 'imagens/HAUT COMPACT LIFE BY CITY.logo.png'  %}"
-      const imgUrlHub = "{% static 'imagens/HUB COMPACT LIFE.foto.png'  %}"
-      const imgUrlHubLogo = "{% static 'imagens/HUB COMPACT LIFE.logo.png'  %}"
-      const imgUrlInfinity = "{% static 'imagens/INFINITY BUSINESS.foto.png'  %}"
-      const imgUrlInfinityLogo = "{% static 'imagens/INFINITY BUSINESS.logo.png'  %}"
-      const imgUrlLegacy = "{% static 'imagens/LEGACY CITY HOME.foto.png'  %}"
-      const imgUrlLegacyLogo = "{% static 'imagens/LEGACY CITY HOME.logo.png'  %}"
-      const imgUrlT23 = "{% static 'imagens/RESIDENCIAL T-23.foto.png'  %}"
-      const imgUrlT23Logo = "{% static 'imagens/RESIDENCIAL T-23.logo.png'  %}"
-      const imgUrlTerraco = "{% static 'imagens/TERRAÇO BOUGAINVILLE.foto.png'  %}"
-      const imgUrlTerracoLogo = "{% static 'imagens/TERRAÇO BOUGAINVILLE.logo.png'  %}"
-      
-      const imgUrlpadrao = "{% static 'imagens/'  %}"
-      const imgUrlCityOmLogo = "{% static 'imagens/CITY_OM_LOGO.png'  %}"
-      const imgUrlCityOmLogoBlack = "{% static 'imagens/CITY_OM_LOGO_BLACK.png'  %}"
-      const imgUrlCityOmLogoSvg = "{% static 'imagens/CITY_OM_LOGO.svg'%}"
-      const imgUrl = "{% static 'imagens/main_page_picture_.png'  %}"
-      const imgUrlLogo = "{% static 'imagens/logo.png'  %}"
-      const imgUrlLogoBlack = "{% static 'imagens/logo_black.png'  %}"
-      const imgUrlsvg = "{% static 'imagens/Rectangle.svg' %}"
+      const imgUrlAtmos = "{% static 'imagens/ATMOS CITY DESIGN.foto.png'  %}";
+      const imgUrlAtmosLogo =
+        "{% static 'imagens/ATMOS CITY DESIGN.logo.png'  %}";
+      const imgUrlAzure = "{% static 'imagens/AZURE COMPACT LIFE.foto.png'  %}";
+      const imgUrlAzureLogo =
+        "{% static 'imagens/AZURE COMPACT LIFE.logo.png'  %}";
+      const imgUrlBlanc = "{% static 'imagens/BLANC CASA DESIGN.foto.png'  %}";
+      const imgUrlBlancLogo =
+        "{% static 'imagens/BLANC CASA DESIGN.logo.png'  %}";
+      const imgUrlGarten = "{% static 'imagens/CITY GARTEN.foto.png'  %}";
+      const imgUrlGartenLogo = "{% static 'imagens/CITY GARTEN.logo.png'  %}";
+      const imgUrlHouse = "{% static 'imagens/CITY HOUSE.foto.png'  %}";
+      const imgUrlHouseLogo = "{% static 'imagens/CITY HOUSE.logo.png'  %}";
+      const imgUrlPMajestic =
+        "{% static 'imagens/CITY PARK MAJESTIC.foto.png'  %}";
+      const imgUrlPMajesticLogo =
+        "{% static 'imagens/CITY PARK MAJESTIC.logo.png'  %}";
+      const imgUrlPPalace = "{% static 'imagens/CITY PARK PALACE.foto.png'  %}";
+      const imgUrlPPalaceLogo =
+        "{% static 'imagens/CITY PARK PALACE.logo.png'  %}";
+      const imgUrlRP = "{% static 'imagens/CITY RICARDO PARANHOS.foto.png'  %}";
+      const imgUrlRPLogo =
+        "{% static 'imagens/CITY RICARDO PARANHOS.logo.png'  %}";
+      const imgUrlWay = "{% static 'imagens/CITY WAY.foto.png'  %}";
+      const imgUrlWayLogo = "{% static 'imagens/CITY WAY.logo.png'  %}";
+      const imgUrlEpic = "{% static 'imagens/EPIC CITY HOME.foto.png'  %}";
+      const imgUrlEpicLogo = "{% static 'imagens/EPIC CITY HOME.logo.png'  %}";
+      const imgUrlHaut =
+        "{% static 'imagens/HAUT COMPACT LIFE BY CITY.foto.png'  %}";
+      const imgUrlHautLogo =
+        "{% static 'imagens/HAUT COMPACT LIFE BY CITY.logo.png'  %}";
+      const imgUrlHub = "{% static 'imagens/HUB COMPACT LIFE.foto.png'  %}";
+      const imgUrlHubLogo = "{% static 'imagens/HUB COMPACT LIFE.logo.png'  %}";
+      const imgUrlInfinity =
+        "{% static 'imagens/INFINITY BUSINESS.foto.png'  %}";
+      const imgUrlInfinityLogo =
+        "{% static 'imagens/INFINITY BUSINESS.logo.png'  %}";
+      const imgUrlLegacy = "{% static 'imagens/LEGACY CITY HOME.foto.png'  %}";
+      const imgUrlLegacyLogo =
+        "{% static 'imagens/LEGACY CITY HOME.logo.png'  %}";
+      const imgUrlT23 = "{% static 'imagens/RESIDENCIAL T-23.foto.png'  %}";
+      const imgUrlT23Logo = "{% static 'imagens/RESIDENCIAL T-23.logo.png'  %}";
+      const imgUrlTerraco =
+        "{% static 'imagens/TERRAÇO BOUGAINVILLE.foto.png'  %}";
+      const imgUrlTerracoLogo =
+        "{% static 'imagens/TERRAÇO BOUGAINVILLE.logo.png'  %}";
+
+      const imgUrlpadrao = "{% static 'imagens/'  %}";
+      const imgUrlCityOmLogo = "{% static 'imagens/CITY_OM_LOGO.png'  %}";
+      const imgUrlCityOmLogoBlack =
+        "{% static 'imagens/CITY_OM_LOGO_BLACK.png'  %}";
+      const imgUrlCityOmLogoSvg = "{% static 'imagens/CITY_OM_LOGO.svg'%}";
+      const imgUrl = "{% static 'imagens/main_page_picture_.png'  %}";
+      const imgUrlLogo = "{% static 'imagens/logo.png'  %}";
+      const imgUrlLogoBlack = "{% static 'imagens/logo_black.png'  %}";
+      const imgUrlsvg = "{% static 'imagens/Rectangle.svg' %}";
     </script>
-    <script type="module" crossorigin src="{% static 'portalCorretoresHypno/html2canvas-D9SPbF4G.js'  %}"></script>
-    <script type="module" crossorigin src="{% static 'portalCorretoresHypno/index.es-B_lYsYFF.js'  %}"></script>
-    <script type="module" crossorigin src="{% static 'portalCorretoresHypno/purify.es-a-CayzAK'  %}"></script>
-    <script type="module" crossorigin src="{% static 'portalCorretoresHypno/index-DJ1lnNIO.js'  %}"></script>
+    <script
+      type="module"
+      crossorigin
+      src="{% static 'portalCorretoresHypno/html2canvas-D9SPbF4G.js'  %}"
+    ></script>
+    <script
+      type="module"
+      crossorigin
+      src="{% static 'portalCorretoresHypno/index.es-B_lYsYFF.js'  %}"
+    ></script>
+    <script
+      type="module"
+      crossorigin
+      src="{% static 'portalCorretoresHypno/purify.es-a-CayzAK'  %}"
+    ></script>
+    <script
+      type="module"
+      crossorigin
+      src="{% static 'portalCorretoresHypno/index-DJ1lnNIO.js'  %}"
+    ></script>
 
     <script defer>
-
       const om_emps = [
         "AZURE COMPACT LIFE",
-              "HAUT COMPACT LIFE BY CITY",
-              "INFINITY BUSINESS",
-              "BLANC CASA DESIGN",
-              "EPIC CITY HOME",
-              "TERRAÇO BOUGAINVILLE",
-              "ATMOS CITY DESIGN",
-              "LEGACY CITY HOME",
-              "CITY RICARDO PARANHOS"
-      ]
-      
+        "HAUT COMPACT LIFE BY CITY",
+        "INFINITY BUSINESS",
+        "BLANC CASA DESIGN",
+        "EPIC CITY HOME",
+        "TERRAÇO BOUGAINVILLE",
+        "ATMOS CITY DESIGN",
+        "LEGACY CITY HOME",
+        "CITY RICARDO PARANHOS",
+      ];
+
       var imagemLogo = document.createElement("img");
-      imagemLogo.src = "https://city-solucoes.com/static/imagens/logo_black.png";
+      imagemLogo.src =
+        "https://city-solucoes.com/static/imagens/logo_black.png";
       imagemLogo.style.alignSelf = "flex-end";
-      
+
       let flagFirstRender = false;
-      
+
       let dropdown = document.getElementById("emps");
-      
+
       dropdown.addEventListener("change", () => {
-      
         setTimeout(() => {
-          let divPrincipal = document.querySelector("#emp_display > div.flex.justify-center.align-middle");
-      
-      
-          updateLogo()
-      
-          if(!flagFirstRender){
-        
+          let divPrincipal = document.querySelector(
+            "#emp_display > div.flex.justify-center.align-middle"
+          );
+
+          updateLogo();
+
+          if (!flagFirstRender) {
             divPrincipal.appendChild(imagemLogo);
-      
+
             flagFirstRender = true;
-      
           }
-        }, 500)
-      
-      })
-      
-      
-      
-      function updateLogo(){
-      
-      
-        if(om_emps.includes(dropdown.value)){
-          imagemLogo.style.maxWidth = "20vw"
-          imagemLogo.style.maxHeight = "100vh"
-          imagemLogo.src = "{% static 'imagens/CITY_OM_LOGO_BLACK.png'  %}";
+        }, 500);
+      });
+
+      function updateLogo() {
+        if (om_emps.includes(dropdown.value)) {
+          imagemLogo.style.maxWidth = "20vw";
+          imagemLogo.style.maxHeight = "100vh";
+          imagemLogo.src = "https://city-solucoes.com/static/imagensCITY_OM_LOGO_BLACK.png";
         } else {
-          imagemLogo.style.maxWidth = "15vw"
-          imagemLogo.src = "{% static 'portalCorretoresHypno/logo_black.png' %}";
+          imagemLogo.style.maxWidth = "15vw";
+          imagemLogo.src =
+            "https://city-solucoes.com/static/imagens/logo_black.png";
         }
-      
       }
-      
-      </script>
-    <link rel="stylesheet" crossorigin href="{% static 'portalCorretoresHypno/index-4V6eg4YP.css' %}">
+    </script>
+    <link
+      rel="stylesheet"
+      crossorigin
+      href="{% static 'portalCorretoresHypno/index-4V6eg4YP.css' %}"
+    />
   </head>
   <body>
     <div id="root"></div>
