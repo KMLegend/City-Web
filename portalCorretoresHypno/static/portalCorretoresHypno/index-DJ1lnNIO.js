@@ -9554,7 +9554,6 @@ let l4 = [
         "INFINITY BUSINESS",
         "BLANC CASA DESIGN",
         "EPIC CITY HOME",
-        // "Legend Praça do Sol",
         "TERRAÇO BOUGAINVILLE",
         "ATMOS CITY DESIGN",
         "LEGACY CITY HOME",
