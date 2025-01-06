@@ -115,6 +115,17 @@ class Api:
         self.con = sqlite3.connect(BASE_DIR / "db.sqlite3")
         return self.con
 
+    def insere_tabela_disponivel_sqlite(self):
+        df_consulta = self.tabela_disponivel()
+        con = self.conexao_bd_sqlite()
+        try:
+            sql_insert = ""
+        except Exception as e:
+            print(e)
+
+    def deleta_tabela_disponivel_sqlite(self):
+        con = self.conexao_bd_sqlite()
+
     def tabela_disponivel_sqlite(self):
         con = self.conexao_bd_sqlite()
         sql = "SELECT * FROM api_disponiveis_tabela_vendas"
