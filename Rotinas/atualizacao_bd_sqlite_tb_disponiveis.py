@@ -53,8 +53,6 @@ def post(url_api):
         print(sql_insert)
         cursor.execute(sql_insert)
         conexao.commit()
-
-
         # Enviando a requisição POST com o formato JSON
         response = requests.post(url_api, json=data, headers={'Content-Type': 'application/json'})
         print(response.status_code)
@@ -86,7 +84,7 @@ def delete(url_api):
 # while True:
 url_api = 'http://city-solucoes.com/api/data/'
 print(delete(url_api))
-# print(post(url_api))
+print(post(url_api))
 
 agora = datetime.now()
 print(f"Atualizado em: {agora.strftime('%Y-%m-%d %H:%M:%S')}")
