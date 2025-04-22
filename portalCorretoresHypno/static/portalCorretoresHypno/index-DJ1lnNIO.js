@@ -45470,10 +45470,10 @@ function DC() {
                                     className:
                                         "bg-city-orange-500 text-city-gray-100 text-left p-0 py-3 text-xs lg:p-3",
                                     children: [
-                                            "1) A presente tabela poderá sofrer alteração de valores e status sem prévio aviso.",
-                                            "<br/>",
-                                            "2) Sempre contactar o gerente responsável pelo seu canal de vendas, para conferência de disponibilidade."
-                                        ]
+                                        xA.jsx("span", { children: "1) A presente tabela poderá sofrer alteração de valores e status sem prévio aviso." }),
+                                        xA.jsx("br", {}),
+                                        xA.jsx("span", { children: "2) Sempre contactar o gerente responsável pelo seu canal de vendas, para conferência de disponibilidade." })
+                                    ]
                                 })
                             ],
                         })
