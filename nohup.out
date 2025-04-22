@@ -12083,3 +12083,7 @@ Not Found: /wp-admin/setup-config.php
 [22/Apr/2025 07:59:52] "GET /api/data/ HTTP/1.0" 200 117569
 [22/Apr/2025 07:59:52] "GET /api/data/ HTTP/1.0" 200 117569
 [22/Apr/2025 07:59:53] "GET /api/data/ HTTP/1.0" 200 117569
+Not Found: /robots.txt
+[22/Apr/2025 08:06:38] "GET /robots.txt HTTP/1.0" 404 2764
+[22/Apr/2025 08:08:41] code 400, message Bad request version ('À\x14À')
+[22/Apr/2025 08:08:41] You're accessing the development server over HTTPS, but it only supports HTTP.
