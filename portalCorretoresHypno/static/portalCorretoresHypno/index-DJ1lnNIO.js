@@ -45468,8 +45468,14 @@ function DC() {
                                 xA.jsx("div", {
                                     id: "div_rodapé",
                                     className:
-                                        "bg-city-orange-500 text-city-gray-100 ps-12 py-2 lg:ps-24 font-normal lg:text-xl italic",
-                                    children: "1) A presente tabela poderá sofrer alteração de valores e status sem prévio aviso.       2) Sempre para contactar o gerente responsável pelo seu canal de vendas, para conferência de disponibilidade."
+                                        "bg-city-orange-500 text-city-gray-100 text-center p-0 py-3 text-xs lg:p-3",
+                                    children: "1) A presente tabela poderá sofrer alteração de valores e status sem prévio aviso."
+                                }),
+                                xA.jsx("div", {
+                                    id: "div_rodapé",
+                                    className:
+                                        "bg-city-orange-500 text-city-gray-100 text-center p-0 py-3 text-xs lg:p-3",
+                                    children: "2) Sempre para contactar o gerente responsável pelo seu canal de vendas, para conferência de disponibilidade."
                                 })
                             ],
                         })
