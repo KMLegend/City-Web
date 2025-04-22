@@ -83,7 +83,7 @@ def delete(url_api):
     return response.status_code
 # while True:
 url_api = 'http://city-solucoes.com/api/data/'
-print(delete(url_api))
+# print(delete(url_api))
 print(post(url_api))
 
 agora = datetime.now()
