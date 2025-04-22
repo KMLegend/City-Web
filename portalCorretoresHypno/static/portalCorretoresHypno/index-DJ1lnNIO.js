@@ -45466,7 +45466,7 @@ function DC() {
                                     children: xA.jsx(Ym, {emp: A, obraSelecionada: t}),
                                 }),
                                 xA.jsx("div", {
-                                    id: "div_rodapé",
+                                    id: "div_rodape",
                                     className:
                                         "bg-city-orange-500 text-city-gray-100 text-left p-0 py-3 text-xs lg:p-3",
                                     children: [
