@@ -9589,6 +9589,7 @@ const c4 = {
         "Areião Park Residence": "Portfólio",
         "Buena Vista Office Design": "Portfólio",
         "Bougainville Square": "Portfólio",
+        "CITY Auten": "Lançamento"
     },
     p1 = {collumnsNotToRender: l4, OM_Emps: u4, emp_status: c4};
 
