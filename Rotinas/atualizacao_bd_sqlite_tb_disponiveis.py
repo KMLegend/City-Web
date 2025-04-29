@@ -54,13 +54,13 @@ def post(url_api):
         cursor.execute(sql_insert)
         conexao.commit()
         # Enviando a requisição POST com o formato JSON
-        response = requests.post(url_api, json=data, headers={'Content-Type': 'application/json'})
-        print(response.status_code)
+        # response = requests.post(url_api, json=data, headers={'Content-Type': 'application/json'})
+        # print(response.status_code)
         # Exibindo a resposta para debug
         # print(f"Resposta: {response.text}")
 
         # Retornando o código de status
-    return response.status_code
+    return cursor
 
 def delete(url_api):
 
