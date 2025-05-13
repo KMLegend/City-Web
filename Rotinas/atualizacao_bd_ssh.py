@@ -2,6 +2,7 @@ import paramiko
 import sqlite3
 import sys
 import os
+import json
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -38,30 +39,31 @@ def insert(ssh):
 
     # Iterando por cada linha do DataFrame
     for _, row in dados.iterrows():
-        # row['obra'] = row['Obra'].strip
-        if row['Obra'].startswith('0'):  # Verifica se começa com 0 e é um número
-            obra = '0o' + row['Obra'][1:]
-            print("entrou")
-        else:
-            obra = row['Obra']
+        obra = '0o' + row['Obra'][1:] if row['Obra'].startswith('0') else row['Obra']
 
-        # Construir comando SQL escapado
-        sql_insert = f"""INSERT INTO api_disponiveis_tabela_vendas (Produto, Empresa, NomeFantasia, Obra, Unidade, tipo, cod_tipologia, tipologia, status) VALUES ("{row["Produto"]}","{row["Empresa"]}","{row["NomeFantasia"]}","{row["Obra"]}","{row["Unidade"]}","{row["tipo"]}","{row["cod_tipologia"]}","{row["tipologia"]}","{row["status"]}")"""
+        valores = (
+        str(row["Produto"]), str(row["Empresa"]), json.dumps(row["NomeFantasia"]),
+        json.dumps(obra), json.dumps(row["Unidade"]), json.dumps(row["tipo"]),
+        json.dumps(row["cod_tipologia"]), json.dumps(row["tipologia"]), json.dumps(row["status"])
+    )
 
-        command = f"""
-        python3 -c "import sqlite3; conn = sqlite3.connect('{sqlite_file}'); cursor = conn.cursor(); cursor.execute('{sql_insert}'); conn.commit(); conn.close();"
-        """
+    # Construir a query SQL com os valores formatados corretamente
+    sql_insert = f"INSERT INTO api_disponiveis_tabela_vendas (Produto, Empresa, NomeFantasia, Obra, Unidade, tipo, cod_tipologia, tipologia, status) VALUES ({', '.join(valores)})"
 
-        # Executar comando via SSH
-        stdin, stdout, stderr = ssh.exec_command(command)
-        output = stdout.read().decode('utf-8')
-        errors = stderr.read().decode('utf-8')
+    # Criar o comando SSH corretamente escapado
+    command = f"""
+    python3 -c "import sqlite3; conn = sqlite3.connect('{sqlite_file}'); cursor = conn.cursor(); cursor.execute(\\"{sql_insert}\\"); conn.commit(); conn.close();"
+    """
 
-        # Exibir resultados
-        if output:
-            print("Saída INSERT:\n", output)
-        if errors:
-            print("Erros INSERT:\n", errors)
+    # Executar o comando via SSH
+    stdin, stdout, stderr = ssh.exec_command(command)
+    output = stdout.read().decode('utf-8')
+    errors = stderr.read().decode('utf-8')
+
+    if output:
+        print("Saída INSERT:\n", output)
+    if errors:
+        print("Erros INSERT:\n", errors)
 def delete(ssh):
     df = api.tabela_disponivel_sqlite()
     # print(df)
