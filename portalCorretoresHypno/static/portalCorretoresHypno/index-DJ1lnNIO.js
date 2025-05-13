@@ -9589,6 +9589,7 @@ const c4 = {
         "Areião Park Residence": "Portfólio",
         "Buena Vista Office Design": "Portfólio",
         "Bougainville Square": "Portfólio",
+        "CITY AUTEN": "Lançamento"
     },
     p1 = {collumnsNotToRender: l4, OM_Emps: u4, emp_status: c4};
 
@@ -45465,6 +45466,16 @@ function DC() {
                                     className: "max-w-full max-h-[75vh] overflow-scroll",
                                     children: xA.jsx(Ym, {emp: A, obraSelecionada: t}),
                                 }),
+                                xA.jsx("div", {
+                                    id: "div_rodapé",
+                                    className:
+                                        "bg-city-orange-500 text-city-gray-100 text-left p-0 py-3 text-xs lg:p-3",
+                                    children: [
+                                        xA.jsx("span", { children: "1) A presente tabela poderá sofrer alteração de valores e status sem prévio aviso." }),
+                                        xA.jsx("br", {}),
+                                        xA.jsx("span", { children: "2) Sempre contactar o gerente responsável pelo seu canal de vendas, para conferência de disponibilidade." })
+                                    ]
+                                })
                             ],
                         })
                         : xA.jsx(xA.Fragment, {}),

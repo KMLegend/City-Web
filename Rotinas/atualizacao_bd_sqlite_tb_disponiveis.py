@@ -54,33 +54,58 @@ def post(url_api):
         cursor.execute(sql_insert)
         conexao.commit()
         # Enviando a requisição POST com o formato JSON
-        response = requests.post(url_api, json=data, headers={'Content-Type': 'application/json'})
-        print(response.status_code)
+        # response = requests.post(url_api, json=data, headers={'Content-Type': 'application/json'})
+        # print(response.status_code)
         # Exibindo a resposta para debug
         # print(f"Resposta: {response.text}")
 
         # Retornando o código de status
-    return response.status_code
+    return cursor
 
 def delete(url_api):
 
     df = api.tabela_disponivel_sqlite()
+    sql_drop = f"DROP TABLE api_disponiveis_tabela_vendas;"
+    cursor.execute(sql_drop)
+    conexao.commit()
+    print(sql_drop)
+    
+    sql_create = f"""CREATE TABLE "api_disponiveis_tabela_vendas" (
+        "id"	INTEGER,
+        "Produto"	VARCHAR(255),
+        "Empresa"	VARCHAR(255),
+        "NomeFantasia"	VARCHAR(255),
+        "Obra"	VARCHAR(255),
+        "Unidade"	VARCHAR(255),
+        "tipo"	VARCHAR(255),
+        "cod_tipologia"	INT,
+        "tipologia"	VARCHAR(255),
+        "status"	VARCHAR(255),
+        PRIMARY KEY("id" AUTOINCREMENT) 
+    );"""
+    
+    cursor.execute(sql_create)
+    conexao.commit()
+    
+    return print(sql_create)
     # print(df)
-    for _, row in df.iterrows():
-        data = {
-            'id': row['id']
-        }
-        try:
-            sql_delete = f"DELETE FROM api_disponiveis_tabela_vendas WHERE id = {row['id']}"
-            print(sql_delete)
-            cursor.execute(sql_delete)
-            conexao.commit()
-        except Exception as e:
-            print(e)
-        response = requests.delete(url_api, json=data, headers={'Content-Type': 'application/json'})
+    # for _, row in df.iterrows():
+    #     data = {
+    #         'id': row['id']
+    #     }
+    #     try:
+    #         sql_delete = f"TRUNCATE TABLE api_disponiveis_tabela_vendas;"
+    #         print(sql_delete)
+    #         cursor.execute(sql_delete)
+    #         conexao.commit()
+    #     except Exception as e:
+    #         print(e)
+            
+          
+    #     response = requests.delete(url_api, json=data, headers={'Content-Type': 'application/json'})
 
 
-    return response.status_code
+    # return response.status_code
 # while True:
 url_api = 'http://city-solucoes.com/api/data/'
 print(delete(url_api))
