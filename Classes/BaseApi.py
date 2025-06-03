@@ -15,12 +15,10 @@ class Api:
         self.conn = None
         self.cursor = None
 
-    def conexao_bd_sql_server(self, usuario, senha, database):
+    def conexao_bd_sql_server(self, usuario, senha):
         try:
             dados_conexao = (
-                "Driver={SQL Server};"
-                "Server=srv-sql01;"
-                f"Database={database};"
+                "Driver=MSSQLCONN;"
                 f"UID={usuario};"
                 f"PWD={senha};"
             )
@@ -31,7 +29,7 @@ class Api:
         return self.conn
 
     def tabela_disponivel(self):
-        conn = self.conexao_bd_sql_server(usuario="usruau", senha="spfmed4$", database="UAU")
+        conn = self.conexao_bd_sql_server(usuario="usruau", senha="spfmed4$")
         sql = """
             SELECT
                     TotalPerson.prod_unid AS  Produto,
