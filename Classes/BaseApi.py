@@ -18,7 +18,7 @@ class Api:
     def conexao_bd_sql_server(self, usuario, senha):
         try:
             dados_conexao = (
-                "Driver=MSSQLCONN;"
+                "DSN=MSSQLCONN;"
                 f"UID={usuario};"
                 f"PWD={senha};"
             )
