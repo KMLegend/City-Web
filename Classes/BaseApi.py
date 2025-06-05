@@ -22,6 +22,13 @@ class Api:
                 f"UID={usuario};"
                 f"PWD={senha};"
             )
+            # dados_conexao = (
+            #     "Driver={SQL Server};"
+            #     "Server=srv-sql01;"
+            #     "Database=UAU;"
+            #     "UID=usruau;"
+            #     "PWD=spfmed4$;"
+            # )
             self.conn = pyodbc.connect(dados_conexao)
         except pyodbc.Error as e:
             print(f"Erro ao conectar ao banco de dados: {e}")
