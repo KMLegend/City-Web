@@ -9863,7 +9863,7 @@ function Wh() {
             children: [
               MA.jsx("img", {
                 className: "w-10 mb-12",
-                src: "{% static 'portalCorretoresHypno/Rectangle.svg'  %}",
+                src: "https://city-solucoes.com/static/imagens/Rectangle.svg",
                 alt: "",
               }),
               MA.jsxs("div", {
@@ -9922,7 +9922,7 @@ function Wh() {
             children: [
               MA.jsx("img", {
                 className: "w-10 mb-12 invisible lg:hidden",
-                src: "{% static 'portalCorretoresHypno/Rectangle.svg'  %}",
+                src: "https://city-solucoes.com/static/imagens/Rectangle.svg",
                 alt: "",
               }),
               MA.jsxs("div", {
@@ -44822,7 +44822,7 @@ function sg() {
             children: [
               MA.jsx("img", {
                 className: "w-8",
-                src: "{% static 'portalCorretoresHypno/Rectangle.svg'  %}",
+                src: "https://city-solucoes.com/static/imagens/Rectangle.svg",
                 alt: "",
               }),
               MA.jsx("h2", {
@@ -44968,7 +44968,7 @@ function ag() {
   return MA.jsxs(MA.Fragment, {
     children: [
       MA.jsx(jh, {}),
-      MA.jsx("img", { src: "{% static 'portalCorretoresHypno/main_page_picture.png'  %}" }),
+      MA.jsx("img", { src: "https://city-solucoes.com/static/imagens/main_page_picture.png" }),
       MA.jsxs("div", {
         className: "mx-[calc(9.7vw)]",
         id: "table",
@@ -45063,7 +45063,7 @@ function lg() {
       id: "printable_table",
       className: "min-w-fit",
       children: [
-        MA.jsx("img", { src: "{% static 'portalCorretoresHypno/Rectangle.svg'  %}", alt: "" }),
+        MA.jsx("img", { src: "https://city-solucoes.com/static/imagens/Rectangle.svg", alt: "" }),
         MA.jsxs("div", {
           className: "flex justify-between p-4",
           children: [
