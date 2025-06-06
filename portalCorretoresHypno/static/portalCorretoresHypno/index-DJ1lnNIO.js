@@ -9538,7 +9538,7 @@ function jh() {
     className: "bg-city-gray-500 text-city-gray-100",
     children: MA.jsx("img", {
       className: "w-[90px]",
-      src: "../public/logo.png",
+      src: "https://city-solucoes.com/static/imagens/logo.png",
       alt: "",
     }),
   });
@@ -44843,13 +44843,13 @@ function sg() {
                 id: "emp_img",
                 width: "100%",
                 className: "rounded-se-3xl mb-5",
-                src: `../public/${n}.foto.png`,
+                src: `https://city-solucoes.com/static/imagens/${n}.foto.png`,
                 alt: "",
               }),
               MA.jsx("img", {
                 id: "emp_logo",
                 className: " flex-none ",
-                src: `../public/${n}.logo.png`,
+                src: `https://city-solucoes.com/static/imagens/${n}.logo.png`,
                 alt: "",
               }),
             ],
@@ -45072,7 +45072,7 @@ function lg() {
               children: MA.jsx("img", {
                 className: "mb-3",
                 width: "350px",
-                src: `../public/${f}.logo.png`,
+                src: `https://city-solucoes.com/static/imagens/${f}.logo.png`,
                 alt: `${Jd(f)}`,
               }),
             }),
@@ -45082,8 +45082,8 @@ function lg() {
                 className: "",
                 width: "300px",
                 src: s.includes(f)
-                  ? "../public/CITY_OM_LOGO_BLACK.png"
-                  : "../public/logo_black.png",
+                  ? "https://city-solucoes.com/static/imagens/CITY_OM_LOGO_BLACK.png"
+                  : "https://city-solucoes.com/static/imagens/logo_black.png",
                 alt: "",
               }),
             }),
